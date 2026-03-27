@@ -1,51 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Drag & Drop</title>
-  <!-- Icons from https://favicon.io/favicon-generator/ -->
-  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-  <link rel="manifest" href="./favicon/site.webmanifest">
-  <link rel="stylesheet" href="style.css">
-
-  <!-- <script type="module" src="script.js"></script> -->
-  <!-- Search : Why the following script doesn't work when place in a seperate file like script.js? -->
-  <script>
-    // Save the id of an element which is being dragged.
-    function drag(event) {
-      event.dataTransfer.setData("text", event.target.id);
-    }
-
-    // Drop the shit
-    function drop(event) {
-      event.preventDefault();
-      let elementId = event.dataTransfer.getData("text");
-      // console.log(elementId);
-      event.target.appendChild(document.getElementById(elementId));
-    }
-
-    // Makes an element to accept drops
-    function allowDrop(event) {
-      event.preventDefault();
-    }
-  </script>
-
 </head>
 
-<body>
-  <div class="box" id="pick-box" ondragover="allowDrop(event)" ondrop="drop(event)">
-    <!-- Search : The draggable elements also allow other dg-elements to be dropped onto them, why?-->
-     <!-- Fix : The dg-elements can also be dragged and dropped into itself. -->
-    <div id="de1" draggable="true" ondragstart="drag(event)">Draggable Element 1</div>
-    <div id="de2" draggable="true" ondragstart="drag(event)">Draggable Element 2</div>
-    <div id="de3" draggable="true" ondragstart="drag(event)">Draggable Element 3</div>
-  </div>
-  <div class="box" id="drop-box" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+<body class="h-screen">
+  <div id="root" class="h-full"></div>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 
 </html>
